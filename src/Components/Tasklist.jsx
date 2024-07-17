@@ -2,16 +2,13 @@ import React from 'react'
 import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import editTask from './Header.jsx'
+import Selectcom from './Selectcom.jsx'
 
 function Tasklist({ taskData, setTaskData }) {
 
     let [taskname,setTaskName]=useState("")
     let [taskdesc,setTaskdesc]=useState("")
-    let [status,setStatus]=useState("ncom")
-
-
-
-
+    let [status,setStatus]=useState("")
 
 
     return <>
@@ -29,13 +26,7 @@ function Tasklist({ taskData, setTaskData }) {
                                                 <sup>{e.taskname}</sup>
                                                 <h6>Description: </h6>
                                                 {e.taskdesc}
-                                                <Form.Group className="mb-1">
-                                                    <Form.Label><h6>Status: </h6></Form.Label>
-                                                    <Form.Select onChange={(e) => setStatus(e.target.value)}>
-                                                        <option value="ncom">Not Completed</option>
-                                                        <option value="com">Completed</option>
-                                                    </Form.Select>
-                                                </Form.Group>
+                                              {/* <Selectcom status={status} setStatus={setStatus}/> */}
                                             </div>
                                         </div>
                                         <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">

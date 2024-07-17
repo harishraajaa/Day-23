@@ -39,6 +39,7 @@ function App() {
     <Route path='/mytodos' element={<Header taskData={taskData} setTaskData={setTaskData}/>}></Route>
     <Route path='/addtodo' element={<Addtodo taskData={taskData} setTaskData={setTaskData}/>}></Route>
     <Route path='/edittodo/:id' element={<Edittodo taskData={taskData} setTaskData={setTaskData}/>}></Route>
+    <Route path='*' element={<Navigate to='/' />} />
     </Routes>
     </BrowserRouter>
     </div>
