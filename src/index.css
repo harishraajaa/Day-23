@@ -1,0 +1,9 @@
+h6{
+    font-weight: 10px;
+    font-size: small;
+}
+
+.tasknameclass,.taskdescclass{
+    color: aqua;
+    font-size: larger;
+}
