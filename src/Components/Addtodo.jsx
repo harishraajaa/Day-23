@@ -19,7 +19,6 @@ function Addtodo({taskData,setTaskData}) {
         
         taskData.push(data)
         setTaskData([...taskData])
-        console.log(taskData)
         document.getElementById('formdata').reset()
         navigate('/mytodos')
 
