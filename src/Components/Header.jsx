@@ -17,13 +17,12 @@ function Header({ taskData, setTaskData }) {
     let navigate = useNavigate()
 
     function setStatusfrom(e, id) {
-        
-        //gettableData(id)
-        //setStatus(e.target.value)
-        //console.log(taskData)
-        // let data = { taskname, taskdesc, status }
-        // //let data ={status}
-        // data.taskid = Number(id)
+        gettableData(id)
+        setStatus(e.target.value)
+        console.log(status)
+
+        let data = { taskname, taskdesc, status }
+        data.taskid = Number(id)
         //console.log(data)
         //console.log(taskData)
 
@@ -99,11 +98,10 @@ function Header({ taskData, setTaskData }) {
         //console.log(index)
         if (index !== -1) {
             //console.log(index)
-            //console.log(taskData)
-            //setTaskName(taskData[index].taskname)
-            //setTaskdesc(taskData[index].taskdesc)
-            //setStatus(taskData[index].status)
-            //console.log(taskData)
+            console.log(taskData)
+            setTaskName(taskData[index].taskname)
+            setTaskdesc(taskData[index].taskdesc)
+            setStatus(taskData[index].status)
         }
         else {
             alert("Error")
@@ -136,49 +134,13 @@ function Header({ taskData, setTaskData }) {
                 </Form>
             </Container>
         </Navbar>
-
+        {/* Section-3 */}
         <section className="py-5">
             <div className="container px-4 px-lg-5 mt-5">
                 <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    {   
-                        filterStatus === "all" ? taskData.map((e, i) => {
-                            let tempid = e.taskid
-                            //console.log(e.status)
-                            return <>
-                                <div className="col mb-5" key={i}>
-                                    <div className="card text-bg-dark mb-3">
-                                        <div className="card-body p-4">
-                                            <div className="text-left">
-                                                <h6>Name: </h6>
-                                                <sup className='tasknameclass'>{e.taskname}</sup>
-                                                <h6>Description: </h6>
-                                                <sup className='taskdescclass'>{e.taskdesc}</sup>
-                                                <Form.Group className="mb-1">
-                                                                    <Form.Label><h6>Status: </h6></Form.Label>
-                                                                    <Form.Select defaultValue={e.status} onChange={(e) => setStatusfrom(e,tempid)}>                                            
-                                                                        <option value='ncom'>Not Completed</option>
-                                                                        <option value='com'>Completed</option>
-                                                                    </Form.Select>
-                                                                </Form.Group>
-                                                {/* <Selectcom status={status} setStatus={setStatus}/> */}
-                                            </div>
-                                        </div>
-                                        <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <Button variant='info' onClick={() => navigate(`/edittodo/${e.taskid}`)}>Edit</Button>
-                                            &nbsp;
-                                            &nbsp;
-                                            &nbsp;
-                                            &nbsp;
-                                            &nbsp;
-                                            &nbsp;
-                                            <Button variant='danger' onClick={() => deleteTask(e.taskid)}>Delete</Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
-                        }) : filterStatus === "completed" ? <>{
-                            taskData.map((e) => e).filter((i) => i.status === 'com').map((e, i) => {
-                                let tempid = e.taskid
+                    {filterStatus==="all"?                            
+                    taskData.map((e, i) => {
+                                let tempid=e.taskid
                                 return <>
                                     <div className="col mb-5" key={i}>
                                         <div className="card text-bg-dark mb-3">
@@ -190,7 +152,7 @@ function Header({ taskData, setTaskData }) {
                                                     <sup className='taskdescclass'>{e.taskdesc}</sup>
                                                     <Form.Group className="mb-1">
                                                         <Form.Label><h6>Status: </h6></Form.Label>
-                                                        <Form.Select defaultValue={e.status} onChange={(e) => setStatusfrom(e, tempid)}>
+                                                        <Form.Select value={e.status} onChange={(e) => setStatusfrom(e,tempid)}>                                            
                                                             <option value='ncom'>Not Completed</option>
                                                             <option value='com'>Completed</option>
                                                         </Form.Select>
@@ -210,56 +172,11 @@ function Header({ taskData, setTaskData }) {
                                         </div>
                                     </div>
                                 </>
-                            })
-                        }</> : <>{
-                            taskData.map((e) => e).filter((i) => i.status === 'ncom').map((e, i) => {
-                                let tempid = e.taskid
-                                return <>
-                                    <div className="col mb-5" key={i}>
-                                        <div className="card text-bg-dark mb-3">
-                                            <div className="card-body p-4">
-                                                <div className="text-left">
-                                                    <h6>Name: </h6>
-                                                    <sup className='tasknameclass'>{e.taskname}</sup>
-                                                    <h6>Description: </h6>
-                                                    <sup className='taskdescclass'>{e.taskdesc}</sup>
-                                                    <Form.Group className="mb-1">
-                                                        <Form.Label><h6>Status: </h6></Form.Label>
-                                                        <Form.Select defaultValue={e.status} onChange={(e) => setStatusfrom(e, tempid)}>
-                                                            <option value='ncom'>Not Completed</option>
-                                                            <option value='com'>Completed</option>
-                                                        </Form.Select>
-                                                    </Form.Group>
-                                                </div>
-                                            </div>
-                                            <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <Button variant='info' onClick={() => navigate(`/edittodo/${e.taskid}`)}>Edit</Button>
-                                                &nbsp;
-                                                &nbsp;
-                                                &nbsp;
-                                                &nbsp;
-                                                &nbsp;
-                                                &nbsp;
-                                                <Button variant='danger' onClick={() => deleteTask(e.taskid)}>Delete</Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </>
-                            })
-                        }</>
-                    }
+                            }):<h1>Harish</h1>}
                 </div>
             </div>
         </section>
-
     </>
-
-
-
-
-
-
-    {/* Section-3 */ }
 
 }
 
